@@ -5,27 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jigar Jayantilal Soni | Portfolio</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; }
-        header { background: #2c3e50; color: #fff; padding: 30px 0; text-align: center; }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { margin: 5px 0 0; font-size: 1.2rem; color: #ecf0f1; }
-        nav { background: #34495e; display: flex; justify-content: center; padding: 15px; position: sticky; top: 0; }
-        nav a { color: #fff; margin: 0 20px; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
-        nav a:hover { color: #3498db; }
-        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 8px; }
-        section { padding: 40px 20px; border-bottom: 1px solid #eee; }
-        section:last-child { border-bottom: none; }
-        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 8px; display: inline-block; }
-        .card { border: 1px solid #e0e0e0; padding: 20px; margin-bottom: 20px; border-radius: 6px; background: #fafafa; }
-        .card h3 { margin-top: 0; color: #34495e; }
+        /* GitHub Minimalist Theme */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #24292f;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .header-bar {
+            background-color: #24292f;
+            padding: 24px 16px;
+            color: #ffffff;
+            text-align: center;
+        }
+        .header-bar h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .header-bar p {
+            margin: 8px 0 0;
+            color: #8c959f;
+            font-size: 16px;
+        }
+        nav {
+            border-bottom: 1px solid #d0d7de;
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+            background-color: #f6f8fa;
+            position: sticky;
+            top: 0;
+        }
+        nav a {
+            color: #24292f;
+            text-decoration: none;
+            margin: 0 16px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        nav a:hover {
+            color: #0969da;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 24px;
+        }
+        h2 {
+            border-bottom: 1px solid #d0d7de;
+            padding-bottom: 8px;
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 16px;
+        }
+        .card {
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        .card h3 {
+            margin: 0 0 8px 0;
+            font-size: 18px;
+            color: #0969da;
+        }
+        .card p, .card ul {
+            margin: 0;
+            font-size: 14px;
+            color: #57606a;
+        }
+        .card ul {
+            margin-top: 8px;
+            padding-left: 20px;
+        }
+        /* Photo Grid Styling */
+        .photo-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .photo-card img {
+            width: 100%;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+        .photo-caption {
+            font-size: 14px;
+            color: #57606a;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
-<header>
+<div class="header-bar">
     <h1>Jigar Jayantilal Soni</h1>
-    <p>Hardware & Electronics Engineer | Bengaluru</p>
-</header>
+    <p>Hardware & Electronics Engineer</p>
+</div>
 
 <nav>
     <a href="#resume">Resume</a>
@@ -34,18 +115,19 @@
 </nav>
 
 <div class="container">
+    
     <!-- RESUME SECTION -->
     <section id="resume">
         <h2>Resume</h2>
         <div class="card">
             <h3>Professional Profile</h3>
             <p>Specializing in high-speed data protocols and digital signal interfaces. Experienced in debugging DSI data lines using Introspect SV5C analyzers and analyzing MIPI D-PHY eye diagrams.</p>
-            
-            <h3>Core Technical Skills</h3>
+            <br>
+            <h3>Technical Expertise</h3>
             <ul>
-                <li><strong>Hardware & Protocols:</strong> MIPI D-PHY, DSI, High-Speed Digital Design, Debugging.</li>
-                <li><strong>DIY & Electronics:</strong> Microcontrollers (Raspberry Pi Pico W), Battery Integration (18650, Buck Converters), Smart Home Automation.</li>
-                <li><strong>Fabrication:</strong> 3D Printing (Ender 3 V2), CAD modeling for custom mechanical parts (e.g., spur gears).</li>
+                <li><strong>Hardware:</strong> MIPI D-PHY, DSI, High-Speed Digital Design, Debugging.</li>
+                <li><strong>Prototyping:</strong> Microcontrollers (Raspberry Pi Pico W), Battery Integration (18650 cells), Custom Smart Home Automation circuits.</li>
+                <li><strong>Fabrication:</strong> 3D Printing (Ender 3 V2), custom mechanical part design.</li>
             </ul>
         </div>
     </section>
@@ -53,10 +135,14 @@
     <!-- PROJECTS SECTION -->
     <section id="projects">
         <h2>Projects</h2>
+        
+        <!-- Copy this block to add a new project -->
         <div class="card">
             <h3>Smart Home & Custom Hardware Integration</h3>
-            <p>Designed and assembled custom circuits for home automation, integrating specific LED modules, sensors, and microcontrollers. Engineered 3D-printed custom enclosures and mechanical components to support the hardware.</p>
+            <p>Designed and assembled custom circuits for home automation, integrating LED modules, sensors, and microcontrollers. Engineered 3D-printed enclosures to support the hardware.</p>
         </div>
+        <!-- End of project block -->
+
         <div class="card">
             <h3>Architectural Modeling & Renovation</h3>
             <p>Managed a multi-phase property renovation featuring custom 3D renderings for specialized cabinetry, POP ceilings, and strategic profile lighting placement.</p>
@@ -66,16 +152,29 @@
     <!-- PHOTOS SECTION -->
     <section id="photos">
         <h2>Photography</h2>
-        <p>Documenting architectural landmarks, history, and landscapes during global travels.</p>
-        <div class="card">
-            <h3>Golden Gate Bridge</h3>
-            <p><em>San Francisco, California</em> — Exploring structural scale through morning and sunset lighting conditions.</p>
-        </div>
-        <div class="card">
-            <h3>Vijay Vitthala Temple & Stone Chariot</h3>
-            <p><em>Hampi, Karnataka</em> — Historical visualization and digital restoration concepts of ancient temple art.</p>
+        <div class="photo-grid">
+            
+            <div class="photo-card">
+                <!-- Replace 'hampi.jpg' with your actual image file name -->
+                <img src="images/hampi.jpg" alt="Vijay Vitthala Temple & Stone Chariot, Hampi">
+                <div class="photo-caption">
+                    <strong>Vijay Vitthala Temple & Stone Chariot</strong><br>
+                    Historical visualization and digital restoration concepts of ancient temple art.
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <!-- Replace 'golden-gate.jpg' with your actual image file name -->
+                <img src="images/golden-gate.jpg" alt="Golden Gate Bridge, San Francisco">
+                <div class="photo-caption">
+                    <strong>Golden Gate Bridge, San Francisco</strong><br>
+                    Exploring structural scale through varying lighting conditions.
+                </div>
+            </div>
+
         </div>
     </section>
+
 </div>
 
 </body>
