@@ -3,28 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume | Jigar Jayantilal Soni</title>
+    <title>Resume | Jigar Soni</title>
     <style>
+        /* --- Base Theme --- */
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.5; color: #24292f; background-color: #ffffff; margin: 0; padding: 0; }
-        .header-bar { background-color: #24292f; padding: 24px 16px; color: #ffffff; text-align: center; }
-        .header-bar h1 { margin: 0; font-size: 24px; font-weight: 600; }
+        .header-bar { background-color: #24292f; padding: 32px 16px; color: #ffffff; text-align: center; }
+        .header-bar h1 { margin: 0; font-size: 28px; font-weight: 600; }
         .header-bar p { margin: 8px 0 0; color: #8c959f; font-size: 16px; }
-        nav { border-bottom: 1px solid #d0d7de; padding: 16px; display: flex; justify-content: center; background-color: #f6f8fa; position: sticky; top: 0; }
+        
+        /* --- Contact Info Styling --- */
+        .contact-info { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 16px; font-size: 14px; }
+        .contact-info a { color: #d0d7de; text-decoration: none; display: flex; align-items: center; gap: 4px; }
+        .contact-info a:hover { color: #ffffff; text-decoration: underline; }
+        
+        nav { border-bottom: 1px solid #d0d7de; padding: 16px; display: flex; justify-content: center; background-color: #f6f8fa; position: sticky; top: 0; z-index: 100; }
         nav a { color: #24292f; text-decoration: none; margin: 0 16px; font-weight: 600; font-size: 14px; }
         nav a:hover { color: #0969da; }
-        .container { max-width: 800px; margin: 40px auto; padding: 0 24px; }
-        h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 8px; font-size: 24px; font-weight: 600; margin-bottom: 16px; }
-        .card { border: 1px solid #d0d7de; border-radius: 6px; padding: 24px; margin-bottom: 16px; }
-        .card h3 { margin: 0 0 8px 0; font-size: 18px; color: #0969da; }
-        .card p, .card ul { margin: 0; font-size: 14px; color: #57606a; }
-        .card ul { margin-top: 8px; padding-left: 20px; }
+        
+        .container { max-width: 850px; margin: 40px auto; padding: 0 24px; }
+        h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 8px; font-size: 24px; font-weight: 600; margin-bottom: 24px; margin-top: 40px; }
+        
+        /* --- Resume Specific Layout --- */
+        .section-text { font-size: 15px; color: #24292f; margin-bottom: 24px; }
+        
+        .resume-item { border-left: 2px solid #d0d7de; padding-left: 16px; margin-bottom: 32px; position: relative; }
+        /* Add a small dot to the timeline */
+        .resume-item::before { content: ''; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background-color: #24292f; }
+        
+        .resume-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 4px; }
+        .resume-header h3 { margin: 0; font-size: 18px; color: #0969da; }
+        .resume-header .date { font-size: 14px; color: #57606a; font-weight: 600; white-space: nowrap; }
+        
+        .company { font-weight: 600; font-size: 15px; color: #24292f; margin-bottom: 8px; }
+        
+        .resume-list { margin: 0; padding-left: 20px; font-size: 14px; color: #57606a; }
+        .resume-list li { margin-bottom: 6px; }
+        
+        .skills-container { background-color: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; font-size: 15px; }
+        
+        @media (max-width: 600px) {
+            .resume-header { flex-direction: column; }
+            .resume-header .date { margin-top: 4px; }
+        }
     </style>
 </head>
 <body>
 
 <div class="header-bar">
-    <h1>Jigar Jayantilal Soni</h1>
-    <p>Hardware & Electronics Engineer</p>
+    <h1>Jigar Soni</h1>
+    <p>System Validation Engineer</p>
+    <div class="contact-info">
+        <a href="mailto:jigardhaval8@gmail.com">jigardhaval8@gmail.com</a>
+        <a href="tel:+919428066397">+91 9428066397</a>
+        <a href="tel:+918618553749">+91 8618553749</a>
+        <a href="https://linkedin.com/in/jigarjsoni" target="_blank">linkedin.com/in/jigarjsoni</a>
+        <a href="https://github.com/jigardhaval8" target="_blank">github.com/jigardhaval8</a>
+    </div>
 </div>
 
 <nav>
@@ -34,20 +68,123 @@
 </nav>
 
 <div class="container">
+    
     <section>
-        <h2>Resume</h2>
-        <div class="card">
-            <h3>Professional Profile</h3>
-            <p>Specializing in high-speed data protocols and digital signal interfaces. Experienced in debugging DSI data lines using Introspect SV5C analyzers and analyzing MIPI D-PHY eye diagrams.</p>
-            <br>
-            <h3>Technical Expertise</h3>
-            <ul>
-                <li><strong>Hardware:</strong> MIPI D-PHY, DSI, High-Speed Digital Design, Debugging.</li>
-                <li><strong>Prototyping:</strong> Microcontrollers (Raspberry Pi Pico W), Battery Integration (18650 cells), Custom Smart Home Automation circuits.</li>
-                <li><strong>Fabrication:</strong> 3D Printing (Ender 3 V2), custom mechanical part design.</li>
-            </ul>
+        <h2>Objective</h2>
+        <div class="section-text">
+            Technology enthusiastic, highly motivated, self learning attitude with over 5 years of experience in Electronics Industry and Presently working at Intel as System Validation Engineer. My career objective is to work in challenging and innovative environment and want to find solutions to problems faced by organization and society by using best of my knowledge and to achieve growth and work satisfaction at both professional and personal level.
         </div>
     </section>
+
+    <section>
+        <h2>Experience</h2>
+        
+        <div class="resume-item">
+            <div class="resume-header">
+                <h3>System Validation Engineer</h3>
+                <span class="date">July 2017 - Present</span>
+            </div>
+            <div class="company">Intel Technology India Pvt Ltd.</div>
+            <ul class="resume-list">
+                <li>Responsible for developing methodologies, creating test plan, developing test contents, execution of test plan, debug of failures on system validation environment for Intel's Network Accelerator and NIC Products.</li>
+                <li>Owned Validation of Power Management, Reset, Fuses, Host Interface, RAS, DFx in Pre and Post Silicon phase of the product life cycle.</li>
+                <li>Responsible for platform bringup and enabling IP validation checkout during power-on of the silicon.</li>
+                <li>Successfully acted as buddy and trained new hires and interns.</li>
+                <li>Voluntary helping team to create, maintain and sustain knowledge base.</li>
+                <li>Innovation and efficiency improvement in feature validation and debug strategy.</li>
+            </ul>
+        </div>
+
+        <div class="resume-item">
+            <div class="resume-header">
+                <h3>Graduate Technical Intern</h3>
+                <span class="date">June 2016 - June 2017</span>
+            </div>
+            <div class="company">Intel Technologies India Pvt. Ltd.</div>
+            <ul class="resume-list">
+                <li>Enabled ULT framework for 3D Resources Handling Library, Re-factored & Enabled Next Generation support, Debugged UMD Driver bugs and developed automatic header generation tool.</li>
+            </ul>
+        </div>
+
+        <div class="resume-item">
+            <div class="resume-header">
+                <h3>Technical Consultant</h3>
+                <span class="date">April 2015 - July 2015</span>
+            </div>
+            <div class="company">Patwa Kinariwala Electronics Ltd.</div>
+            <ul class="resume-list">
+                <li>Developed Hardware and Software solutions to improve the stability of Tension Switch System Product.</li>
+            </ul>
+        </div>
+
+        <div class="resume-item">
+            <div class="resume-header">
+                <h3>R&D Engineer</h3>
+                <span class="date">June 2013 - July 2014</span>
+            </div>
+            <div class="company">Patwa Kinariwala Electronics Ltd.</div>
+            <ul class="resume-list">
+                <li>Owned HW & SW development of next generation tension switch system product.</li>
+                <li>Developed Key debug and test tools and enabled boot loader tools for remote site programming and debug.</li>
+                <li>Developed SW for Length Measuring system, Electronic Yarn Clearer products.</li>
+            </ul>
+        </div>
+
+        <div class="resume-item">
+            <div class="resume-header">
+                <h3>R&D Intern</h3>
+                <span class="date">July 2012 - May 2013</span>
+            </div>
+            <div class="company">Gipitronix Pvt. Ltd.</div>
+            <ul class="resume-list">
+                <li>Developed upgraded version of Industrial Digital Temperature Monitor.</li>
+                <li>Added new features like multiple sensor support, data logging and multiple alarm settings.</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <section>
+        <h2>Education</h2>
+        
+        <div class="resume-item">
+            <div class="resume-header">
+                <h3>Master of Technology, Embedded Systems</h3>
+                <span class="date">2015 - 2017</span>
+            </div>
+            <div class="company">Institute of Technology, Nirma University, Ahmedabad</div>
+            <div class="section-text" style="margin-bottom: 0;">CPI: 9.09/10</div>
+        </div>
+
+        <div class="resume-item">
+            <div class="resume-header">
+                <h3>Bachelor of Engineering, Electronics and Communication Engineering</h3>
+                <span class="date">2009 - 2013</span>
+            </div>
+            <div class="company">SVIT, Vasad (Gujarat Technological University)</div>
+            <div class="section-text" style="margin-bottom: 0;">CGPA: 7.84/10.00</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <strong>Domains:</strong> Automation, Debug, Firmware Development, Data Collection, Visualization & Analysis<br><br>
+            <strong>Hardware/Tools:</strong> Raspberry Pi<br><br>
+            <strong>Programming:</strong> Python, C, Assembly, C++
+        </div>
+    </section>
+
+    <section style="margin-bottom: 60px;">
+        <h2>Achievements & Extra</h2>
+        <ul class="resume-list" style="font-size: 15px; color: #24292f;">
+            <li>Winner of Top Prize for idea Helen: Solution for blind, deaf & deaf mute at Intel India Innovation & Career Fair 2017</li>
+            <li>Automated IP Fuse Validation paper presented at India Innovation Day 2019</li>
+            <li>Developed Automated Test Generation, Execution and Analytics Generator tool for concurrency and stress validation of IP, also published paper on same topic in Internal Conference.</li>
+            <li>Side Projects using Raspberry Pi - DotMatrix Desk Clock, Converted old wired toy car to pi-powered wireless controlled car - Full Autonomous Pet Car.</li>
+        </ul>
+    </section>
+
 </div>
 
 </body>
