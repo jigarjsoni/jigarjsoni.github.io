@@ -3,102 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jigar Jayantilal Soni | Portfolio</title>
+    <title>Resume | Jigar Jayantilal Soni</title>
     <style>
-        /* GitHub Minimalist Theme */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            line-height: 1.5;
-            color: #24292f;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
-        }
-        .header-bar {
-            background-color: #24292f;
-            padding: 24px 16px;
-            color: #ffffff;
-            text-align: center;
-        }
-        .header-bar h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 600;
-        }
-        .header-bar p {
-            margin: 8px 0 0;
-            color: #8c959f;
-            font-size: 16px;
-        }
-        nav {
-            border-bottom: 1px solid #d0d7de;
-            padding: 16px;
-            display: flex;
-            justify-content: center;
-            background-color: #f6f8fa;
-            position: sticky;
-            top: 0;
-        }
-        nav a {
-            color: #24292f;
-            text-decoration: none;
-            margin: 0 16px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        nav a:hover {
-            color: #0969da;
-        }
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 24px;
-        }
-        h2 {
-            border-bottom: 1px solid #d0d7de;
-            padding-bottom: 8px;
-            font-size: 24px;
-            font-weight: 600;
-            margin-top: 40px;
-            margin-bottom: 16px;
-        }
-        .card {
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-            padding: 24px;
-            margin-bottom: 16px;
-        }
-        .card h3 {
-            margin: 0 0 8px 0;
-            font-size: 18px;
-            color: #0969da;
-        }
-        .card p, .card ul {
-            margin: 0;
-            font-size: 14px;
-            color: #57606a;
-        }
-        .card ul {
-            margin-top: 8px;
-            padding-left: 20px;
-        }
-        /* Photo Grid Styling */
-        .photo-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-        .photo-card img {
-            width: 100%;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-            margin-bottom: 12px;
-        }
-        .photo-caption {
-            font-size: 14px;
-            color: #57606a;
-            text-align: center;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.5; color: #24292f; background-color: #ffffff; margin: 0; padding: 0; }
+        .header-bar { background-color: #24292f; padding: 24px 16px; color: #ffffff; text-align: center; }
+        .header-bar h1 { margin: 0; font-size: 24px; font-weight: 600; }
+        .header-bar p { margin: 8px 0 0; color: #8c959f; font-size: 16px; }
+        nav { border-bottom: 1px solid #d0d7de; padding: 16px; display: flex; justify-content: center; background-color: #f6f8fa; position: sticky; top: 0; }
+        nav a { color: #24292f; text-decoration: none; margin: 0 16px; font-weight: 600; font-size: 14px; }
+        nav a:hover { color: #0969da; }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 24px; }
+        h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 8px; font-size: 24px; font-weight: 600; margin-bottom: 16px; }
+        .card { border: 1px solid #d0d7de; border-radius: 6px; padding: 24px; margin-bottom: 16px; }
+        .card h3 { margin: 0 0 8px 0; font-size: 18px; color: #0969da; }
+        .card p, .card ul { margin: 0; font-size: 14px; color: #57606a; }
+        .card ul { margin-top: 8px; padding-left: 20px; }
     </style>
 </head>
 <body>
@@ -109,15 +28,13 @@
 </div>
 
 <nav>
-    <a href="#resume">Resume</a>
-    <a href="#projects">Projects</a>
-    <a href="#photos">Photos</a>
+    <a href="index.html">Resume</a>
+    <a href="projects.html">Projects</a>
+    <a href="photos.html">Photos</a>
 </nav>
 
 <div class="container">
-    
-    <!-- RESUME SECTION -->
-    <section id="resume">
+    <section>
         <h2>Resume</h2>
         <div class="card">
             <h3>Professional Profile</h3>
@@ -131,50 +48,6 @@
             </ul>
         </div>
     </section>
-
-    <!-- PROJECTS SECTION -->
-    <section id="projects">
-        <h2>Projects</h2>
-        
-        <!-- Copy this block to add a new project -->
-        <div class="card">
-            <h3>Smart Home & Custom Hardware Integration</h3>
-            <p>Designed and assembled custom circuits for home automation, integrating LED modules, sensors, and microcontrollers. Engineered 3D-printed enclosures to support the hardware.</p>
-        </div>
-        <!-- End of project block -->
-
-        <div class="card">
-            <h3>Architectural Modeling & Renovation</h3>
-            <p>Managed a multi-phase property renovation featuring custom 3D renderings for specialized cabinetry, POP ceilings, and strategic profile lighting placement.</p>
-        </div>
-    </section>
-
-    <!-- PHOTOS SECTION -->
-    <section id="photos">
-        <h2>Photography</h2>
-        <div class="photo-grid">
-            
-            <div class="photo-card">
-                <!-- Replace 'hampi.jpg' with your actual image file name -->
-                <img src="images/hampi.jpg" alt="Vijay Vitthala Temple & Stone Chariot, Hampi">
-                <div class="photo-caption">
-                    <strong>Vijay Vitthala Temple & Stone Chariot</strong><br>
-                    Historical visualization and digital restoration concepts of ancient temple art.
-                </div>
-            </div>
-
-            <div class="photo-card">
-                <!-- Replace 'golden-gate.jpg' with your actual image file name -->
-                <img src="images/golden-gate.jpg" alt="Golden Gate Bridge, San Francisco">
-                <div class="photo-caption">
-                    <strong>Golden Gate Bridge, San Francisco</strong><br>
-                    Exploring structural scale through varying lighting conditions.
-                </div>
-            </div>
-
-        </div>
-    </section>
-
 </div>
 
 </body>
