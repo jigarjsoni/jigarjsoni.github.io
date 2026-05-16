@@ -3,192 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photography | Jigar Jayantilal Soni</title>
+    <title>Photography | Jigar Soni</title>
     <style>
-        /* --- Base Theme (Same as before) --- */
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.5; color: #24292f; background-color: #ffffff; margin: 0; padding: 0; }
-        .header-bar { background-color: #24292f; padding: 24px 16px; color: #ffffff; text-align: center; }
-        .header-bar h1 { margin: 0; font-size: 24px; font-weight: 600; }
-        .header-bar p { margin: 8px 0 0; color: #8c959f; font-size: 16px; }
-        nav { border-bottom: 1px solid #d0d7de; padding: 16px; display: flex; justify-content: center; background-color: #f6f8fa; position: sticky; top: 0; z-index: 100; }
+
+        /* --- Top Right Heart --- */
+        .header-heart {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            color: #ff3b30; /* Bright red */
+            font-size: 24px;
+            z-index: 5; /* Keeps it above any overlays */
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.6));
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+        .header-heart:hover {
+            transform: scale(1.15); /* Slight zoom when hovered */
+        }
+
+        /* --- Base Theme (GitHub Light) --- */
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; 
+            line-height: 1.5; 
+            color: #24292f; 
+            background-color: #ffffff; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        /* --- Dynamic Shrinking Header --- */
+        header {
+            position: fixed; /* Keeps it at the top */
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background-color: #24292f;
+            text-align: center;
+            color: #ffffff;
+            transition: all 0.3s ease; /* Makes the shrinking smooth */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            padding: 32px 16px;
+            transition: all 0.3s ease;
+        }
+        .header-content h1 { margin: 0; font-size: 28px; font-weight: 600; transition: all 0.3s ease; }
+        .header-content p { margin: 8px 0 0; color: #8c959f; font-size: 16px; transition: all 0.3s ease; }
+
+        /* The Shrink State (applied via JavaScript) */
+        header.shrink .header-content { padding: 12px 16px; }
+        header.shrink h1 { font-size: 20px; }
+        header.shrink p { display: none; /* Hides subtitle to save space */ }
+
+        /* Navigation Bar */
+        nav { 
+            background-color: #f6f8fa; 
+            border-bottom: 1px solid #d0d7de; 
+            padding: 14px; 
+            display: flex; 
+            justify-content: center; 
+        }
         nav a { color: #24292f; text-decoration: none; margin: 0 16px; font-weight: 600; font-size: 14px; }
         nav a:hover { color: #0969da; }
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 24px; }
-        h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 8px; font-size: 24px; font-weight: 600; margin-bottom: 16px; }
 
-        /* --- Instagram-like Photo Grid --- */
+        /* --- Main Content --- */
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            /* Push content down so it doesn't hide behind the fixed header */
+            padding: 180px 24px 40px 24px; 
+        }
+        h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 8px; font-size: 24px; font-weight: 600; margin-bottom: 20px; }
+
+        /* --- Photo Grid --- */
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 16px;
         }
         .grid-item {
             position: relative;
-            aspect-ratio: 1 / 1; /* keeps squares */
+            aspect-ratio: 1 / 1; 
             overflow: hidden;
             border: 1px solid #d0d7de;
             border-radius: 6px;
             cursor: pointer;
+            background: #f6f8fa;
         }
         .grid-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* crops to fit square without stretching */
+            width: 100%; height: 100%;
+            object-fit: cover; 
             transition: transform 0.3s ease;
         }
-        .grid-item:hover img {
-            transform: scale(1.05); /* subtle zoom on hover */
-        }
+        .grid-item:hover img { transform: scale(1.05); }
 
-        /* --- Modal (Overlay) Styling --- */
+        /* --- Minimalist Modal --- */
         .modal {
-            display: none; /* hidden by default */
-            position: fixed;
-            z-index: 1000; /* sits on top of everything */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.85); /* semi-transparent black bkg */
-            overflow: auto; /* enables scroll if needed */
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            display: none; position: fixed; z-index: 1000; 
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.85); 
+            justify-content: center; align-items: center; padding: 20px;
         }
-        /* shows modal when JS changes display to flex */
-        .modal.show {
-            display: flex;
-        }
+        .modal.show { display: flex; }
 
         .modal-content-container {
             background-color: #fff;
-            border-radius: 6px;
-            max-width: 900px;
-            width: 100%;
-            max-height: 90vh;
-            display: flex; /* side-by-side layout */
-            overflow: hidden;
+            border-radius: 6px; max-width: 900px; width: 100%; max-height: 90vh;
+            display: flex; overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        /* Left side: Image */
-        .modal-image-wrapper {
-            flex: 2; /* takes up 2/3 of space */
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-image-wrapper img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain; /* ensures whole image is visible */
-        }
+        .modal-image-wrapper { flex: 2; background-color: #000; display: flex; justify-content: center; align-items: center; }
+        .modal-image-wrapper img { max-width: 100%; max-height: 90vh; object-fit: contain; }
 
-        /* Right side: Text details */
         .modal-details {
-            flex: 1; /* takes up 1/3 of space */
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            border-left: 1px solid #d0d7de;
-            overflow-y: auto; /* in case text is very long */
+            flex: 1; padding: 24px; display: flex; flex-direction: column;
+            border-left: 1px solid #d0d7de; overflow-y: auto; background: #fff;
         }
-        .modal-details h3 {
-            margin: 0 0 12px 0;
-            font-size: 18px;
-            color: #24292f;
-        }
-        .modal-details p {
-            margin: 0;
-            font-size: 14px;
-            color: #57606a;
-            line-height: 1.6;
-        }
+        .modal-details h3 { margin: 0 0 12px 0; font-size: 18px; color: #0969da; }
+        .modal-details p { margin: 0; font-size: 14px; color: #57606a; line-height: 1.6; }
 
-        /* Close Button */
         .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            color: #fff;
-            font-size: 35px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1001;
+            position: absolute; top: 15px; right: 25px;
+            color: #fff; font-size: 35px; font-weight: bold; cursor: pointer; z-index: 1001;
         }
-        .close-modal:hover {
-            color: #d0d7de;
-        }
+        .close-modal:hover { color: #d0d7de; }
 
-        /* Responsive adjustments for mobile */
         @media (max-width: 768px) {
-            .modal-content-container {
-                flex-direction: column; /* stack vertically on phone */
-                max-height: 95vh;
-            }
-            .modal-image-wrapper {
-                flex: none;
-                height: 50vh;
-            }
-            .modal-details {
-                border-left: none;
-                border-top: 1px solid #d0d7de;
-                padding: 16px;
-            }
+            .modal-content-container { flex-direction: column; max-height: 95vh; }
+            .modal-image-wrapper { flex: none; height: 50vh; }
+            .modal-details { border-left: none; border-top: 1px solid #d0d7de; padding: 16px; }
+        }
+/* --- Header Photo --- */
+        .header-photo {
+            width: 100%;
+            height: 350px;
+            /* Replace with your actual header image filename */
+            background-image: url('images/golden-gate.jpg'); 
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Dark overlay to make the white text pop */
+        .header-photo::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.3); 
+        }
+        .header-photo-text {
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
+            text-align: center;
+        }
+        .header-photo-text h2 {
+            border: none;
+            color: #ffffff;
+            font-size: 36px;
+            margin: 0;
+            padding: 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
         }
     </style>
 </head>
 <body>
 
-<div class="header-bar">
-    <h1>Jigar Jayantilal Soni</h1>
-    <p>Hardware & Electronics Engineer</p>
-</div>
-
-<nav>
-    <a href="index.html">Resume</a>
-    <a href="projects.html">Projects</a>
-    <a href="photos.html">Photos</a>
-</nav>
+<header id="site-header">
+    <div class="header-content">
+        <h1>Jigar Soni</h1>
+        <p>Hardware & Electronics Engineer</p>
+    </div>
+    <nav>
+        <a href="index.html">Resume</a>
+        <a href="projects.html">Projects</a>
+        <a href="photos.html">Photos</a>
+    </nav>
+</header>
 
 <div class="container">
-    <section>
-        <h2>Photography</h2>
-        <p style="color: #57606a; font-size: 14px; margin-bottom: 20px;">Click on an image to view details.</p>
-        
-        <div class="photo-grid">
-            
-            <!-- Photo Item 1 -->
-            <!-- Note: data-title and data-caption hold the text for the pop-up -->
-            <div class="grid-item" 
-                 data-title="Vijay Vitthala Temple & Stone Chariot, Hampi" 
-                 data-caption="Historical visualization and digital restoration concepts of ancient temple art. Documenting the intricate carvings and structural engineering of this UNESCO World Heritage site.">
-                <img src="images/hampi.jpg" alt="Hampi Temple Chariot">
-            </div>
-
-            <!-- Photo Item 2 -->
-            <div class="grid-item" 
-                 data-title="Golden Gate Bridge, San Francisco" 
-                 data-caption="Exploring structural scale through varying lighting conditions. Taken during early morning fog, highlighting the Art Deco styling and 'International Orange' color against the natural landscape.">
-                <img src="images/golden_gate_night.jpg" alt="Golden Gate Bridge">
-            </div>
-
-            <!-- Add more grid-items here by copying the block above -->
-
+    <!-- <h2>Photography Gallery</h2>
+    <p style="color: #57606a; font-size: 14px; margin-bottom: 24px;">Click any image to view details.</p> -->
+    
+    <!-- <div class="header-photo">
+        <div class="header-photo-text">
+            <h2>Global Perspectives</h2>
+            <p style="font-size: 16px; margin-top: 8px; text-shadow: 1px 1px 4px rgba(0,0,0,0.5);">Documenting Architecture, History & Landscapes</p>
         </div>
-    </section>
+    </div> -->
+
+    <div class="header-photo">
+        <div class="header-heart">&hearts;</div>
+    </div>
+
+    <div class="photo-grid" id="gallery-grid">
+        
+        <div class="grid-item" 
+             data-title="Vijay Vitthala Temple & Stone Chariot" 
+             data-caption="Hampi, Karnataka. Historical visualization and digital restoration concepts of ancient temple art.">
+            <img src="images/spring26.jpg" alt="Hampi Temple">
+        </div>
+
+        <div class="grid-item" 
+             data-title="Golden Gate Bridge" 
+             data-caption="San Francisco, California. Exploring structural scale through varying lighting conditions.">
+            <img src="images/sinchan.jpg" alt="Golden Gate Bridge">
+        </div>
+
+        <div class="grid-item" 
+             data-title="Golden Gate Bridge" 
+             data-caption="San Francisco, California. Exploring structural scale through varying lighting conditions.">
+            <img src="images/shifun.jpg" alt="Golden Gate Bridge">
+        </div>
+
+        <div class="grid-item" 
+             data-title="Golden Gate Bridge" 
+             data-caption="San Francisco, California. Exploring structural scale through varying lighting conditions.">
+            <img src="images/bay26.jpg" alt="Golden Gate Bridge">
+        </div>
+
+        <div class="grid-item" 
+             data-title="Golden Gate Bridge" 
+             data-caption="San Francisco, California. Exploring structural scale through varying lighting conditions.">
+            <img src="images/tpe26.jpg" alt="Golden Gate Bridge">
+        </div>        
+
+        <div class="grid-item" 
+             data-title="Golden Gate Bridge" 
+             data-caption="San Francisco, California. Exploring structural scale through varying lighting conditions.">
+            <img src="images/sf26.jpg" alt="Golden Gate Bridge">
+        </div>
+
+        <div class="grid-item" 
+             data-title="Golden Gate Bridge" 
+             data-caption="San Francisco, California. Exploring structural scale through varying lighting conditions.">
+            <img src="images/shifun.jpg" alt="Golden Gate Bridge">
+        </div>
+
+        <div class="grid-item" 
+             data-title="Golden Gate Bridge" 
+             data-caption="San Francisco, California. Exploring structural scale through varying lighting conditions.">
+            <img src="images/gold.jpg" alt="Golden Gate Bridge">
+        </div>
+
+        <div class="grid-item" 
+             data-title="Golden Gate Bridge" 
+             data-caption="San Francisco, California. Exploring structural scale through varying lighting conditions.">
+            <img src="images/golen-gate-nigth.jpg" alt="Golden Gate Bridge">
+        </div>        
+    </div>
 </div>
 
-/* --- The Modal/Overlay Structure --- */
 <div id="photoModal" class="modal">
     <span class="close-modal">&times;</span>
     <div class="modal-content-container">
-        <!-- Left Side -->
         <div class="modal-image-wrapper">
             <img id="modalImg" src="" alt="Expanded View">
         </div>
-        <!-- Right Side -->
         <div class="modal-details">
             <h3 id="modalTitle"></h3>
             <p id="modalCaption"></p>
@@ -196,60 +274,69 @@
     </div>
 </div>
 
-/* --- JavaScript Logic --- */
 <script>
-    // Get modal elements
+    // 1. GENERATE 16 DUMMY PHOTOS
+    // const galleryGrid = document.getElementById('gallery-grid');
+    // for (let i = 1; i <= 16; i++) {
+    //     // Using picsum.photos for beautiful random placeholders
+    //     const photoHTML = `
+    //         <div class="grid-item" 
+    //              data-title="Gallery Image ${i}" 
+    //              data-caption="This is a placeholder caption for image number ${i}. When you replace this with your real photos, you can describe the location, lighting conditions, or architectural details here.">
+    //             <img src="https://picsum.photos/400/400?random=${i}" alt="Dummy Image ${i}">
+    //         </div>
+    //     `;
+    //     galleryGrid.innerHTML += photoHTML;
+    // }
+
+    // 2. HEADER SHRINK LOGIC
+    window.addEventListener("scroll", function() {
+        const header = document.getElementById("site-header");
+        // If scrolled down more than 50 pixels, add the 'shrink' class
+        if (window.scrollY > 50) {
+            header.classList.add("shrink");
+        } else {
+            header.classList.remove("shrink");
+        }
+    });
+
+    // 3. MODAL LOGIC
     const modal = document.getElementById("photoModal");
     const modalImg = document.getElementById("modalImg");
     const modalTitle = document.getElementById("modalTitle");
     const modalCaption = document.getElementById("modalCaption");
     const closeBtn = document.getElementsByClassName("close-modal")[0];
 
-    // Get all grid items
+    // Note: Because we injected the grid items with JS above, we select them AFTER generation
     const gridItems = document.querySelectorAll(".grid-item");
 
-    // Loop through grid items and add click event
     gridItems.forEach(item => {
         item.addEventListener("click", function() {
-            // 1. Open the modal
             modal.classList.add("show");
-            
-            // 2. Get the specific data from the clicked item
             const imgSrc = this.querySelector("img").src;
-            const titleText = this.getAttribute("data-title");
-            const captionText = this.getAttribute("data-caption");
-            
-            // 3. Populate the modal with that data
+            // For the modal, let's pull a higher resolution version of the same random image
+            // In your real code, this would just be the normal image path
+            // modalImg.src = imgSrc.replace('400/400', '800/800'); 
             modalImg.src = imgSrc;
-            modalTitle.innerText = titleText;
-            modalCaption.innerText = captionText;
-            
-            // Prevent scrolling on the main page while modal is open
-            document.body.style.overflow = "hidden";
+            modalTitle.innerText = this.getAttribute("data-title");
+            modalCaption.innerText = this.getAttribute("data-caption");
+            document.body.style.overflow = "hidden"; // Stop background scrolling
         });
     });
 
-    // Function to close the modal
     function closeModal() {
         modal.classList.remove("show");
-        document.body.style.overflow = "auto"; // Re-enable scrolling
+        document.body.style.overflow = "auto"; 
     }
 
-    // Close when clicking (x)
     closeBtn.addEventListener("click", closeModal);
 
-    // Close when clicking outside the content area (on the black background)
     modal.addEventListener("click", function(event) {
-        if (event.target === modal) {
-            closeModal();
-        }
+        if (event.target === modal) { closeModal(); }
     });
 
-    // Close when pressing 'Esc' key
     document.addEventListener("keydown", function(event) {
-        if (event.key === "Escape" && modal.classList.contains("show")) {
-            closeModal();
-        }
+        if (event.key === "Escape" && modal.classList.contains("show")) { closeModal(); }
     });
 </script>
 
